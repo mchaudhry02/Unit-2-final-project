@@ -1,0 +1,4 @@
+[build]
+  base = "spendsmart"
+  command = "npm run build"
+  publish = "dist"
