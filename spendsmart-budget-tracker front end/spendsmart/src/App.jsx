@@ -155,15 +155,23 @@ const findOrCreateCategory = async (categoryName) => {
   }
 }
   const addExpense = async (expense) => {
-    // Map frontend shape → backend shape
-    const payload = {
-      description: expense.title,
-      amount: expense.amount,
-      type: "EXPENSE",
-      date: new Date().toISOString().split("T")[0],
-    }
     try {
+      // Step 1: find or create the category in the database
+      const category = await findOrCreateCategory(expense.category)
+
+      // Step 2: build the transaction payload with the category linked
+      const payload = {
+        description: expense.title,
+        amount: expense.amount,
+        type: "EXPENSE",
+        date: new Date().toISOString().split("T")[0],
+        category: category ? { id: category.id } : null,
+      }
+
+      // Step 3: save the transaction
       const created = await createTransaction(payload)
+
+      // Step 4: update local state
       setExpenses(prev => [...prev, {
         id: created.id,
         title: created.description,
