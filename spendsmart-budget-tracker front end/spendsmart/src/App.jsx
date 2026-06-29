@@ -3,7 +3,7 @@ import ExpenseForm from "./components/ExpenseForm"
 import ExpenseList from "./components/ExpenseList"
 import Summary from "./components/Summary"
 import Chart from "./components/Chart"
-import { getTransactions, createTransaction, updateTransaction, deleteTransaction } from "./api/app.js"
+import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory   } from "./api/app.js"
 
 function About() {
   const features = [
