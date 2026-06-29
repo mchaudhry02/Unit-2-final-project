@@ -141,6 +141,19 @@ function App() {
   useEffect(() => { localStorage.setItem("spendsmart-budget", budget) }, [budget])
   useEffect(() => { localStorage.setItem("spendsmart-page", page) }, [page])
 
+// Find existing category by name or create a new one, returns category object
+const findOrCreateCategory = async (categoryName) => {
+  try {
+    const existing = await getCategories()
+    const found = existing.find(c => c.name.toLowerCase() === categoryName.toLowerCase())
+    if (found) return found
+    const created = await createCategory({ name: categoryName, color: "#4a90e2" })
+    return created
+  } catch (err) {
+    console.error("Failed to find/create category:", err)
+    return null
+  }
+}
   const addExpense = async (expense) => {
     // Map frontend shape → backend shape
     const payload = {
