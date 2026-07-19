@@ -233,7 +233,6 @@ const findOrCreateCategory = async (categoryName) => {
   const filteredExpenses = expenses
     .filter(exp => filterCategory === "All" || exp.category === filterCategory)
     .filter(exp => exp.title.toLowerCase().includes(search.toLowerCase()))
-    console.log("currentUser:", currentUser, "authPage:", authPage)
     if (!currentUser) {
         if (authPage === "register") {
           return (
@@ -313,6 +312,7 @@ const findOrCreateCategory = async (categoryName) => {
         )}
         {page === "About" && <About />}
         {page === "Contact" && <Contact />}
+        {page === "Profile" && <Profile expenses={expenses} />}
       </div>
 
       <footer className="footer">
