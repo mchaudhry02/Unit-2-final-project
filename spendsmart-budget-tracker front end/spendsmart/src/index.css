@@ -1074,3 +1074,94 @@ button:hover {
   font-size: 0.9rem;
   opacity: 0.85;
 }
+
+/* Profile Page */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0;
+}
+
+.profile-email {
+  color: #6b7280;
+  margin: 0.25rem 0 0 0;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.profile-stat-icon {
+  font-size: 1.5rem;
+}
+
+.profile-stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.profile-stat-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.profile-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.profile-section h3 {
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+}
+
+.auth-sent {
+  background: #f0fdf4;
+  color: #16a34a;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
