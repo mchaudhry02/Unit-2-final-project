@@ -232,6 +232,23 @@ const findOrCreateCategory = async (categoryName) => {
     .filter(exp => filterCategory === "All" || exp.category === filterCategory)
     .filter(exp => exp.title.toLowerCase().includes(search.toLowerCase()))
 
+    if (!currentUser) {
+        if (authPage === "register") {
+          return (
+            <Register onRegister={() => setAuthPage("login")} />
+          )
+        }
+        return (
+          <Login onLogin={(username, redirect) => {
+            if (redirect === "register") {
+              setAuthPage("register")
+            } else {
+              setCurrentUser(username)
+            }
+          }} />
+        )
+      }
+
   return (
     <div>
       <nav className="navbar">
