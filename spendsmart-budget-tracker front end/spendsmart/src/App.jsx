@@ -4,6 +4,8 @@ import ExpenseList from "./components/ExpenseList"
 import Summary from "./components/Summary"
 import Chart from "./components/Chart"
 import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory   } from "./api/app.js"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 function About() {
   const features = [
