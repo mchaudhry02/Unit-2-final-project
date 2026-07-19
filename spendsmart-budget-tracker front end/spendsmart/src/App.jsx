@@ -256,15 +256,16 @@ const findOrCreateCategory = async (categoryName) => {
       <nav className="navbar">
         <span className="navbar-brand" onClick={() => setPage("Dashboard")} style={{ cursor: "pointer" }}>SpendSmart</span>
         <div className="navbar-links">
-            <button
-              className={page === "Profile" ? "nav-btn active" : "nav-btn"}
-              onClick={() => setPage("Profile")}
-            >Profile</button>
+
 
 
           <button className={page === "Dashboard" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Dashboard")}>Dashboard</button>
           <button className={page === "About" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("About")}>About</button>
           <button className={page === "Contact" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Contact")}>Contact</button>
+          <button
+           className={page === "Profile" ? "nav-btn active" : "nav-btn"}
+           onClick={() => setPage("Profile")}
+          >Profile</button>
           <span className="navbar-user">👤 {currentUser}</span>
           <button className="nav-btn" onClick={async () => {
               await fetch("http://localhost:8080/api/auth/logout", {
