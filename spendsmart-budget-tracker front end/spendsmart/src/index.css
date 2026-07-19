@@ -1068,3 +1068,9 @@ button:hover {
 .auth-link:hover {
   text-decoration: underline;
 }
+
+.navbar-user {
+  color: white;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
