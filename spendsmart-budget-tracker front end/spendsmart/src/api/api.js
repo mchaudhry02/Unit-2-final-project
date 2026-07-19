@@ -47,3 +47,17 @@ export const deleteCategory = (id) =>
     method: "DELETE",
     credentials: "include"
   });
+
+  // Auth / Profile
+  export const getProfile = () =>
+    fetch(`${BASE_URL}/auth/me`, {
+      credentials: "include"
+    }).then(res => res.json());
+
+  export const changePassword = (currentPassword, newPassword) =>
+    fetch(`${BASE_URL}/auth/change-password`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ currentPassword, newPassword }),
+    }).then(res => res.json());
