@@ -75,6 +75,11 @@ public class AuthController {
         if (auth == null || !auth.isAuthenticated() || auth.getName().equals("anonymousUser")) {
             return ResponseEntity.status(401).body(Map.of("error", "Not logged in"));
         }
-        return ResponseEntity.ok(Map.of("username", auth.getName()));
+        User user = userService.findByUsername(auth.getName());
+        return ResponseEntity.ok(Map.of(
+                "id", user.getId(),
+                "username", user.getUsername(),
+                "email", user.getEmail()
+        ));
     }
 }
