@@ -6,6 +6,7 @@ import Chart from "./components/Chart"
 import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory   } from "./api/api.js"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Profile from "./pages/Profile"
 
 console.log("APP FILE IS LOADING")
 function About() {
