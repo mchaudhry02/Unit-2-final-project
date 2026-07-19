@@ -254,6 +254,14 @@ const findOrCreateCategory = async (categoryName) => {
       <nav className="navbar">
         <span className="navbar-brand" onClick={() => setPage("Dashboard")} style={{ cursor: "pointer" }}>SpendSmart</span>
         <div className="navbar-links">
+            <span className="navbar-user">👤 {currentUser}</span>
+            <button className="nav-btn" onClick={async () => {
+              await fetch("http://localhost:8080/api/auth/logout", {
+                method: "POST",
+                credentials: "include"
+              })
+              setCurrentUser(null)
+            }}>Logout</button>
           <button className={page === "Dashboard" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Dashboard")}>Dashboard</button>
           <button className={page === "About" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("About")}>About</button>
           <button className={page === "Contact" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Contact")}>Contact</button>
