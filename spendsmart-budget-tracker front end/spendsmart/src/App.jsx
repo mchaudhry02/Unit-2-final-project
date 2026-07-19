@@ -3,10 +3,11 @@ import ExpenseForm from "./components/ExpenseForm"
 import ExpenseList from "./components/ExpenseList"
 import Summary from "./components/Summary"
 import Chart from "./components/Chart"
-import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory   } from "./api/app.js"
+import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory   } from "./api/api.js"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 
+console.log("APP FILE IS LOADING")
 function About() {
   const features = [
     { icon: "📊", title: "Visual Charts", desc: "Donut and bar charts show where your money goes at a glance." },
@@ -231,7 +232,7 @@ const findOrCreateCategory = async (categoryName) => {
   const filteredExpenses = expenses
     .filter(exp => filterCategory === "All" || exp.category === filterCategory)
     .filter(exp => exp.title.toLowerCase().includes(search.toLowerCase()))
-
+    console.log("currentUser:", currentUser, "authPage:", authPage)
     if (!currentUser) {
         if (authPage === "register") {
           return (
