@@ -1,6 +1,8 @@
 SELECT * FROM categories;
 SELECT * FROM transactions;
+Open this
 SELECT * FROM transaction_details;
+
 USE budget_tracker;
 SHOW TABLES;
 
@@ -25,11 +27,11 @@ SELECT
   t.type,
   t.date,
   c.name AS category_name
-FROM transactions t
+FROM transactitransactionsons t
 LEFT JOIN categories c ON t.category_id = c.id;
 
-CREATE VIEW transaction_details AS
-SELECT 
+CREATE OR REPLACE VIEW transaction_details AS
+SELECT
   t.id,
   t.description,
   t.amount,
