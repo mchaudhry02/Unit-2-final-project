@@ -82,4 +82,22 @@ public class AuthController {
                 "email", user.getEmail()
         ));
     }
+
+    @PutMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestBody Map<String, String> body) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth == null || !auth.isAuthenticated()) {
+            return ResponseEntity.status(401).body(Map.of("error", "Not logged in"));
+        }
+        try {
+            userService.changePassword(
+                    auth.getName(),
+                    body.get("currentPassword"),
+                    body.get("newPassword")
+            );
+            return ResponseEntity.ok(Map.of("message", "Password changed successfully"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
 }
