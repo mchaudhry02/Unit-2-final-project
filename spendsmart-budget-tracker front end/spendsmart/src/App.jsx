@@ -107,11 +107,13 @@ function Contact() {
 }
 
 function App() {
-  const [expenses, setExpenses] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [budget, setBudget] = useState(() => {
-    const saved = localStorage.getItem("spendsmart-budget")
-    return saved ? Number(saved) : 1000
+    const [authPage, setAuthPage] = useState("login")
+    const [currentUser, setCurrentUser] = useState(null)
+    const [expenses, setExpenses] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [budget, setBudget] = useState(() => {
+        const saved = localStorage.getItem("spendsmart-budget")
+        return saved ? Number(saved) : 1000
   })
   const [page, setPage] = useState(() => localStorage.getItem("spendsmart-page") || "Dashboard")
   const [search, setSearch] = useState("")
