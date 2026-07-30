@@ -105,7 +105,14 @@ function Chart({ expenses }) {
   return (
     <div className="chart-card">
       <h3 className="section-title">Spending by Category</h3>
-        <div className="charts-row" style={{ display: "flex", flexDirection: "row", alignItems: "flex-start", gap: "20px", flexWrap: "nowrap", overflowX: "auto" }}>
+        <div className="charts-row"
+        style={{
+        display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            gap: "12px",
+            flexWrap: "wrap",   // <-- important
+            overflowX: "hidden" }}>
       {/* Pie/Donut Chart */}
         <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <p className="chart-label">By Share</p>
