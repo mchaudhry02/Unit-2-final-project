@@ -69,7 +69,7 @@ function Chart({ expenses }) {
  
     const barCount = labels.length
     const slot = chartW / barCount
-    const barWidth = Math.min(slot * 0.35, 30)  // narrower bars -> more separation
+    const barWidth = Math.min(slot * 0.28, 22)  // narrower bars -> more separation
     const gap = slot
 
     labels.forEach((label, i) => {
