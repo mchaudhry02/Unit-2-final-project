@@ -128,7 +128,7 @@ function Chart({ expenses }) {
         {/* Bar Chart */}
         <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <p className="chart-label">By Amount</p>
-          <canvas ref={barRef} width={260} height={200} />
+          <canvas ref={barRef} width={360} height={200} />
         </div>
         {/* Divider */}
         <div className="chart-divider" />
