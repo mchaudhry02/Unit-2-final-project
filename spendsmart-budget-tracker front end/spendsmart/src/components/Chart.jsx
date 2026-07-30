@@ -104,16 +104,46 @@ function Chart({ expenses }) {
 
   return (
     <div className="chart-card">
-      <h3 className="section-title">Spending by Category</h3>
-        <div className="charts-row"
+      {/* Top header row */}
+      <div
         style={{
-        display: "flex",
-            flexDirection: "row",
-            alignItems: "flex-start",
-            gap: "12px",
-            flexWrap: "wrap",   // <-- important
-            overflowX: "hidden" }}>
-      {/* Pie/Donut Chart */}
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "12px",
+          marginBottom: "8px",
+        }}
+      >
+        <h3 className="section-title" style={{ margin: 0 }}>
+          Spending by Category
+        </h3>
+
+        <img
+          src={spendSmartLogo}
+          alt="SpendSmart Logo"
+          style={{
+            width: 110,
+            height: 110,
+            borderRadius: "50%",
+            objectFit: "cover",
+            boxShadow: "0 4px 12px rgba(37,99,235,0.18)",
+          }}
+        />
+      </div>
+
+      {/* Charts row (no logo inside) */}
+      <div
+        className="charts-row"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-start",
+          gap: "12px",
+          flexWrap: "wrap",
+          overflowX: "hidden",
+        }}
+      >
+        {/* Pie/Donut Chart */}
         <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <p className="chart-label">By Share</p>
           <div className="chart-wrap" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "12px" }}>
@@ -129,28 +159,18 @@ function Chart({ expenses }) {
             </div>
           </div>
         </div>
+
         {/* Divider */}
         <div className="chart-divider" />
- 
+
         {/* Bar Chart */}
         <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <p className="chart-label">By Amount</p>
           <canvas ref={barRef} width={360} height={200} />
         </div>
-        {/* Divider */}
-        <div className="chart-divider" />
-        {/* Logo Image */}
-        <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-          <img
-            src={spendSmartLogo}
-            alt="SpendSmart Logo"
-            style={{ width: 130, height: 130, borderRadius: "50%", objectFit: "cover", boxShadow: "0 4px 12px rgba(37,99,235,0.18)" }}
-          />
-        </div>
- 
       </div>
     </div>
-  )
+  );
 }
 
 export default Chart
