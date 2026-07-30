@@ -91,11 +91,12 @@ function Chart({ expenses }) {
       ctx.fillText("$" + val.toFixed(0), x + barWidth / 2, y - 4)
  
       // Draw label below bar
+      ctx.font = "8px Arial"
       ctx.fillStyle = "#9ca3af"
-      ctx.font = "9px Arial"
       ctx.textAlign = "center"
-      const shortLabel = label.length > 8 ? label.slice(0, 7) + "…" : label
-      ctx.fillText(shortLabel, x + barWidth / 2, H - paddingBottom + 14)
+
+      const shortLabel = label.length > 10 ? label.slice(0, 9) + "…" : label
+      ctx.fillText(shortLabel, x + barWidth / 2, H - paddingBottom + 10)
     })
   }, [expenses])
 
