@@ -68,9 +68,10 @@ function Chart({ expenses }) {
     ctx.clearRect(0, 0, W, H)
  
     const barCount = labels.length
-    const barWidth = Math.min((chartW / barCount) * 0.6, 40)
-    const gap = chartW / barCount
- 
+    const slot = chartW / barCount
+    const barWidth = Math.min(slot * 0.35, 30)  // narrower bars -> more separation
+    const gap = slot
+
     labels.forEach((label, i) => {
       const val = values[i]
       const barH = (val / maxValue) * chartH
