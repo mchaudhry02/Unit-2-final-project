@@ -3,12 +3,11 @@ import ExpenseForm from "./components/ExpenseForm"
 import ExpenseList from "./components/ExpenseList"
 import Summary from "./components/Summary"
 import Chart from "./components/Chart"
-import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory   } from "./api/api.js"
+import { getTransactions, createTransaction, updateTransaction, deleteTransaction, getCategories, createCategory } from "./api/api.js"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Profile from "./pages/Profile"
 
-console.log("APP FILE IS LOADING")
 function About() {
   const features = [
     { icon: "📊", title: "Visual Charts", desc: "Donut and bar charts show where your money goes at a glance." },
@@ -70,9 +69,11 @@ function Contact() {
     try {
       await fetch("/", { method: "POST", body: formData })
       setSent(true)
-      setName(""); setEmail(""); setMessage("")
+      setName("")
+      setEmail("")
+      setMessage("")
     } catch (error) {
-      console.error("Form error:", error)
+      console.error("Form submission error:", error)
     }
   }
 
@@ -111,13 +112,13 @@ function Contact() {
 }
 
 function App() {
-    const [authPage, setAuthPage] = useState("login")
-    const [currentUser, setCurrentUser] = useState(null)
-    const [expenses, setExpenses] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [budget, setBudget] = useState(() => {
-        const saved = localStorage.getItem("spendsmart-budget")
-        return saved ? Number(saved) : 1000
+  const [authPage, setAuthPage] = useState("login")
+  const [currentUser, setCurrentUser] = useState(null)
+  const [expenses, setExpenses] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [budget, setBudget] = useState(() => {
+    const saved = localStorage.getItem("spendsmart-budget")
+    return saved ? Number(saved) : 1000
   })
   const [page, setPage] = useState(() => localStorage.getItem("spendsmart-page") || "Dashboard")
   const [search, setSearch] = useState("")
@@ -129,7 +130,7 @@ function App() {
   useEffect(() => {
     getTransactions()
       .then(data => {
-        // Map backend shape → frontend shape
+        // Map backend shape to frontend shape
         const mapped = data.map(t => ({
           id: t.id,
           title: t.description,
@@ -147,25 +148,25 @@ function App() {
   useEffect(() => { localStorage.setItem("spendsmart-budget", budget) }, [budget])
   useEffect(() => { localStorage.setItem("spendsmart-page", page) }, [page])
 
-// Find existing category by name or create a new one, returns category object
-const findOrCreateCategory = async (categoryName) => {
-  try {
-    const existing = await getCategories()
-    const found = existing.find(c => c.name.toLowerCase() === categoryName.toLowerCase())
-    if (found) return found
-    const created = await createCategory({ name: categoryName, color: "#4a90e2" })
-    return created
-  } catch (err) {
-    console.error("Failed to find/create category:", err)
-    return null
+  // Find existing category by name or create a new one
+  const findOrCreateCategory = async (categoryName) => {
+    try {
+      const existing = await getCategories()
+      const found = existing.find(c => c.name.toLowerCase() === categoryName.toLowerCase())
+      if (found) return found
+      return await createCategory({ name: categoryName, color: "#4a90e2" })
+    } catch (err) {
+      console.error("Failed to find/create category:", err)
+      return null
+    }
   }
-}
+
   const addExpense = async (expense) => {
     try {
-      // Step 1: find or create the category in the database
+      // Find or create the category in the database
       const category = await findOrCreateCategory(expense.category)
 
-      // Step 2: build the transaction payload with the category linked
+      // Build the transaction payload with the category linked
       const payload = {
         description: expense.title,
         amount: expense.amount,
@@ -174,10 +175,8 @@ const findOrCreateCategory = async (categoryName) => {
         category: category ? { id: category.id } : null,
       }
 
-      // Step 3: save the transaction
+      // Save the transaction and update local state
       const created = await createTransaction(payload)
-
-      // Step 4: update local state
       setExpenses(prev => [...prev, {
         id: created.id,
         title: created.description,
@@ -233,46 +232,40 @@ const findOrCreateCategory = async (categoryName) => {
   const filteredExpenses = expenses
     .filter(exp => filterCategory === "All" || exp.category === filterCategory)
     .filter(exp => exp.title.toLowerCase().includes(search.toLowerCase()))
-    if (!currentUser) {
-        if (authPage === "register") {
-          return (
-            <Register onRegister={() => setAuthPage("login")} />
-          )
+
+  // Show auth pages if user is not logged in
+  if (!currentUser) {
+    if (authPage === "register") {
+      return <Register onRegister={() => setAuthPage("login")} />
+    }
+    return (
+      <Login onLogin={(username, redirect) => {
+        if (redirect === "register") {
+          setAuthPage("register")
+        } else {
+          setCurrentUser(username)
         }
-        return (
-          <Login onLogin={(username, redirect) => {
-            if (redirect === "register") {
-              setAuthPage("register")
-            } else {
-              setCurrentUser(username)
-            }
-          }} />
-        )
-      }
+      }} />
+    )
+  }
 
   return (
     <div>
       <nav className="navbar">
         <span className="navbar-brand" onClick={() => setPage("Dashboard")} style={{ cursor: "pointer" }}>SpendSmart</span>
         <div className="navbar-links">
-
-
-
           <button className={page === "Dashboard" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Dashboard")}>Dashboard</button>
           <button className={page === "About" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("About")}>About</button>
           <button className={page === "Contact" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Contact")}>Contact</button>
-          <button
-           className={page === "Profile" ? "nav-btn active" : "nav-btn"}
-           onClick={() => setPage("Profile")}
-          >Profile</button>
+          <button className={page === "Profile" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Profile")}>Profile</button>
           <span className="navbar-user">👤 {currentUser}</span>
           <button className="nav-btn" onClick={async () => {
-              await fetch("http://localhost:8080/api/auth/logout", {
-                  method: "POST",
-                  credentials: "include"
-                  })
-                 setCurrentUser(null)
-               }}>Logout</button>
+            await fetch("http://localhost:8080/api/auth/logout", {
+              method: "POST",
+              credentials: "include"
+            })
+            setCurrentUser(null)
+          }}>Logout</button>
         </div>
       </nav>
 
