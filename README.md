@@ -139,20 +139,15 @@ Visit `http://localhost:5173` in your browser. Register a new account or log in 
 Unit-2-final-project/
 ├── SpendSmart- Budget tracker back end/
 │   └── SpendSmart-Budget-tracker/
-│       ├── src/main/java/com.example.SpendSmart_.Budget.tracker/
-│       │   ├── config/         (SecurityConfig)
+│       ├── src/main/java/.../
+│       │   ├── config/         (SecurityConfig, WebConfig)
 │       │   ├── controller/     (AuthController, CategoryController, TransactionController)
 │       │   ├── model/          (User, Category, Transaction, TransactionType)
 │       │   ├── repository/     (UserRepository, CategoryRepository, TransactionRepository)
 │       │   └── service/        (UserService, CategoryService, TransactionService)
-│       ├── SpendSmartBudgetTrackerApplication
 │       ├── src/main/resources/
 │       │   └── application.properties
-│       ├── database.sql
-│       ├── HELP.md
-│       ├──mvnw
-│       ├──mvnw.cmd
-│       └──pom.xml
+│       └── database.sql
 │
 └── spendsmart-budget-tracker front end/
     └── spendsmart/
@@ -160,9 +155,7 @@ Unit-2-final-project/
             ├── api/            (api.js — all fetch calls)
             ├── components/     (ExpenseForm, ExpenseList, ExpenseItem, Summary, Chart)
             ├── pages/          (Login, Register, Profile)
-            ├── App.jsx
-            ├── index.css
-            └── main.jsx
+            └── App.jsx
 ```
 
 ---
@@ -171,7 +164,7 @@ Unit-2-final-project/
 [Add link to your ERD here]
 
 ## Wireframes
-[Add link to your wireframes here]
+https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2czNZWURoZzNsaGZieDVBZmV2Z21ua0JnYU1qUUdneUQwbzVVM2dsRmp1cE1GcG9uUFVoT2pPNHpRS1cxeVVEa0NwelN5ZXNVaHA5MWxsT1ZyZ2I3dHlCL2lXUURBd044SHFHaVlWYWk0d3NxeHNmeG9BPT0hdjE=?share_link_id=852386448290
 
 ---
 
