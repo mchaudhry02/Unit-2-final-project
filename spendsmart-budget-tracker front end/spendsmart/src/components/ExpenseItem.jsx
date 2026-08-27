@@ -49,9 +49,15 @@ function ExpenseItem({ expense, deleteExpense, editExpense }) {
         {expense.category && (
           <span className="expense-category">{expense.category}</span>
         )}
-        {expense.date && (
-          <span className="expense-date">📅 {expense.date}</span>
-        )}
+       {expense.date && (
+         <span className="expense-date">
+           📅 {new Date(expense.date).toLocaleDateString("en-US", {
+             year: "numeric",
+             month: "numeric",
+             day: "numeric"
+           })}
+         </span>
+       )}
       </div>
       <div className="expense-right">
         <span className="expense-amount">${parseFloat(expense.amount).toFixed(2)}</span>
