@@ -1,7 +1,7 @@
 # SpendSmart - Budget Tracker
 
 ## Elevator Pitch
-SpendSmart is a full-stack budget tracking web application built for students and young professionals who want a clear, real-time view of their finances — without spreadsheets or complicated setup. Users register an account, log in securely, and track their expenses by category with live charts, a budget progress bar, search and filter tools, and a personal profile page. All data is stored in a MySQL database and served through a RESTful Spring Boot API.
+SpendSmart is a full-stack budget tracking web application built for students and young professionals who want a clear, real-time view of their finances — without spreadsheets or complicated setup. Users register an account, log in securely, and track their expenses by category with live charts, a budget progress bar, smart notifications, search and filter tools, and a personal profile page. All data is stored in a MySQL database and served through a RESTful Spring Boot API.
 
 ---
 
@@ -12,7 +12,6 @@ SpendSmart is a full-stack budget tracking web application built for students an
 - JavaScript (ES6+)
 - HTML5 / CSS3
 - Canvas API (donut and bar charts)
-- React Router DOM
 
 ### Backend
 - Java 21
@@ -40,14 +39,19 @@ SpendSmart is a full-stack budget tracking web application built for students an
 ## Features
 - User registration and login with BCrypt password encryption
 - Session-based authentication with Spring Security
-- Add, edit, and delete expenses
+- Personalized greeting based on time of day (Good Morning / Afternoon / Evening)
+- Add, edit, and delete expenses with date tracking
 - Organize expenses by category (linked to database via foreign key)
 - Donut and bar charts showing spending by category (Canvas API)
 - Live budget progress bar with color-coded warnings
+- Smart notifications — alerts when approaching or exceeding budget limit
 - Search and filter expenses by name or category
-- Profile page showing username, email, spending stats, and password change
+- Profile page showing username, email, last login time, spending stats, and password change
+- Notifications page with budget alerts and category overspending warnings
+- Transaction date display on each expense item
 - Fully persistent data saved to MySQL database
 - RESTful API with full CRUD operations on transactions and categories
+- Database SQL script for initial setup and sample data population
 
 ---
 
@@ -70,7 +74,9 @@ Open **MySQL Workbench**, connect to your local instance, and run the included S
 ```
 SpendSmart- Budget tracker back end/SpendSmart-Budget-tracker/database.sql
 ```
-This creates the `budget_tracker` database, all tables, and sample data including two demo accounts (username: `demo` or `testuser`, password: `password123`).
+This creates the `budget_tracker` database, all tables, and sample data including two demo accounts:
+- Username: `demo` — Password: `password123`
+- Username: `testuser` — Password: `password123`
 
 ### 3. Configure the backend
 Open the file:
@@ -106,8 +112,7 @@ npm run dev
 Vite will start on `http://localhost:5173`
 
 ### 6. Open the app
-Visit `http://localhost:5173` in your browser. Register a new account or log in with a demo account:
-- Username: `demo` — Password: `password123`
+Visit `http://localhost:5173` in your browser. Register a new account or log in with a demo account.
 
 ---
 
@@ -154,15 +159,14 @@ Unit-2-final-project/
         └── src/
             ├── api/            (api.js — all fetch calls)
             ├── components/     (ExpenseForm, ExpenseList, ExpenseItem, Summary, Chart)
-            ├── pages/          (Login, Register, Profile)
+            ├── pages/          (Login, Register, Profile, Notifications)
             └── App.jsx
 ```
 
 ---
 
 ## Entity Relationship Diagram
-[Add link to your ERD here]
-
+![ERD](SpendSmart.png)
 ## Wireframes
 https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2czNZWURoZzNsaGZieDVBZmV2Z21ua0JnYU1qUUdneUQwbzVVM2dsRmp1cE1GcG9uUFVoT2pPNHpRS1cxeVVEa0NwelN5ZXNVaHA5MWxsT1ZyZ2I3dHlCL2lXUURBd044SHFHaVlWYWk0d3NxeHNmeG9BPT0hdjE=?share_link_id=852386448290
 
@@ -183,3 +187,4 @@ https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2
 - Import expenses from a bank statement
 - Dark mode toggle
 - Mobile-responsive redesign
+- Analytics page with monthly spending trends
