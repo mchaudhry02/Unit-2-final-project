@@ -11,13 +11,16 @@ import Notifications from "./pages/Notifications"
 
 function About() {
   const features = [
-    { icon: "📊", title: "Visual Charts", desc: "Donut and bar charts show where your money goes at a glance." },
-    { icon: "➕", title: "Quick Add", desc: "Log expenses in seconds with name, amount, and category." },
-    { icon: "✏️", title: "Edit & Delete", desc: "Fix mistakes easily — update or remove any expense anytime." },
-    { icon: "💾", title: "Auto-Save", desc: "Your data is saved to a real database — it's there on any device." },
-    { icon: "🎯", title: "Budget Goals", desc: "Set a budget and track your progress with a live progress bar." },
-    { icon: "🔍", title: "Search & Filter", desc: "Find any expense instantly by name or category." },
-  ]
+      { icon: "📊", title: "Visual Charts", desc: "Donut and bar charts show exactly where your money goes at a glance." },
+      { icon: "➕", title: "Quick Add", desc: "Log expenses in seconds with a name, amount, category and date." },
+      { icon: "✏️", title: "Edit & Delete", desc: "Fix mistakes easily — update or remove any expense anytime with confirmation." },
+      { icon: "🗄️", title: "Database Powered", desc: "Your data is saved to a real MySQL database — accessible from anywhere." },
+      { icon: "🎯", title: "Budget Goals", desc: "Set a monthly budget and track progress with a live color-coded progress bar." },
+      { icon: "🔍", title: "Search & Filter", desc: "Find any expense instantly by name or filter the list by category." },
+      { icon: "🔒", title: "Secure Login", desc: "Register and log in securely — your data is protected with BCrypt encryption." },
+      { icon: "🔔", title: "Smart Notifications", desc: "Get alerts when you're close to your budget limit or overspending in a category." },
+      { icon: "👤", title: "User Profile", desc: "View your spending stats, account info, and manage your password from your profile." },
+    ]
 
   return (
     <div className="about-card">
@@ -48,6 +51,8 @@ function About() {
         <span className="about-badge">☕ Spring Boot</span>
         <span className="about-badge">🗄️ MySQL</span>
         <span className="about-badge">🎨 Canvas API</span>
+        <span className="about-badge">🔒 Spring Security</span>
+        <span className="about-badge">☕ Java 21</span>
       </div>
     </div>
   )
