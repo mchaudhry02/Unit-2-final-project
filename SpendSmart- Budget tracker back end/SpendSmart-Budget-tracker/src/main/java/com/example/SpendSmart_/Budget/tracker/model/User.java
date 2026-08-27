@@ -1,6 +1,8 @@
 package com.example.SpendSmart_.Budget.tracker.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "users")
@@ -19,6 +21,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column
+    private LocalDateTime lastLogin;
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -30,4 +35,7 @@ public class User {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public LocalDateTime getLastLogin() { return lastLogin; }
+    public void setLastLogin(LocalDateTime lastLogin) { this.lastLogin = lastLogin; }
 }

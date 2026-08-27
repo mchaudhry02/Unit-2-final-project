@@ -52,6 +52,7 @@ public class AuthController {
             SecurityContextHolder.getContext().setAuthentication(auth);
             HttpSession session = request.getSession(true);
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            userService.updateLastLogin(auth.getName());
             return ResponseEntity.ok(Map.of(
                     "message", "Login successful",
                     "username", auth.getName()
@@ -79,8 +80,10 @@ public class AuthController {
         return ResponseEntity.ok(Map.of(
                 "id", user.getId(),
                 "username", user.getUsername(),
-                "email", user.getEmail()
+                "email", user.getEmail(),
+                "lastLogin", user.getLastLogin() != null ? user.getLastLogin().toString() : "First login"
         ));
+
     }
 
     @PutMapping("/change-password")

@@ -42,4 +42,9 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
     }
+    public void updateLastLogin(String username) {
+        User user = findByUsername(username);
+        user.setLastLogin(java.time.LocalDateTime.now());
+        userRepository.save(user);
+    }
 }

@@ -7,6 +7,7 @@ import { getTransactions, createTransaction, updateTransaction, deleteTransactio
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Profile from "./pages/Profile"
+import Notifications from "./pages/Notifications"
 
 function About() {
   const features = [
@@ -109,6 +110,13 @@ function Contact() {
       <p className="contact-note">Our team will review your message and respond as soon as possible.</p>
     </div>
   )
+}
+
+function getGreeting(username) {
+  const hour = new Date().getHours()
+  if (hour < 12) return `Good Morning, ${username}! ☀️`
+  if (hour < 18) return `Good Afternoon, ${username}! 👋`
+  return `Good Evening, ${username}! 🌙`
 }
 
 function App() {
@@ -258,6 +266,10 @@ function App() {
           <button className={page === "About" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("About")}>About</button>
           <button className={page === "Contact" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Contact")}>Contact</button>
           <button className={page === "Profile" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Profile")}>Profile</button>
+          <button
+            className={page === "Notifications" ? "nav-btn active" : "nav-btn"}
+            onClick={() => setPage("Notifications")}
+          > Notifications</button>
           <span className="navbar-user">👤 {currentUser}</span>
           <button className="nav-btn" onClick={async () => {
             await fetch("http://localhost:8080/api/auth/logout", {
@@ -274,6 +286,7 @@ function App() {
           <>
             <div className="page-header">
               <h1>SpendSmart</h1>
+              <p className="greeting">{getGreeting(currentUser)}</p>
               {editingBudget ? (
                 <div className="budget-edit">
                   <input type="number" value={budgetInput} onChange={e => setBudgetInput(e.target.value)} className="budget-input" />
@@ -306,6 +319,9 @@ function App() {
         {page === "About" && <About />}
         {page === "Contact" && <Contact />}
         {page === "Profile" && <Profile expenses={expenses} />}
+        {page === "Notifications" && (
+          <Notifications expenses={expenses} budget={budget} />
+        )}
       </div>
 
       <footer className="footer">
