@@ -26,11 +26,11 @@ function Profile({ expenses }) {
 
   const topCategory = expenses.length > 0
     ? Object.entries(
-        expenses.reduce((acc, e) => {
-          acc[e.category] = (acc[e.category] || 0) + e.amount
-          return acc
-        }, {})
-      ).sort((a, b) => b[1] - a[1])[0][0]
+      expenses.reduce((acc, e) => {
+        acc[e.category] = (acc[e.category] || 0) + e.amount
+        return acc
+      }, {})
+    ).sort((a, b) => b[1] - a[1])[0][0]
     : "None"
 
   const handlePasswordChange = async (e) => {
@@ -75,11 +75,11 @@ function Profile({ expenses }) {
         <div>
           <h2 className="profile-name">{profile?.username}</h2>
           <p className="profile-email">{profile?.email}</p>
-           <p className="profile-last-login">
-              🕐 Last login: {profile?.lastLogin === "First login"
-                ? "First login"
-                : new Date(profile?.lastLogin).toLocaleString()}
-            </p>
+          <p className="profile-last-login">
+            🕐 Last login: {profile?.lastLogin === "First login"
+              ? "First login"
+              : new Date(profile?.lastLogin).toLocaleString()}
+          </p>
         </div>
       </div>
 

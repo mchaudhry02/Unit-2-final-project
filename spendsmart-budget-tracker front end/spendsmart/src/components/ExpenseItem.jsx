@@ -7,8 +7,8 @@ function ExpenseItem({ expense, deleteExpense, editExpense }) {
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const handleSave = () => {
-  if (!editTitle.trim() || editAmount === "" || editAmount === null) return
-      editExpense({ ...expense, title: editTitle, amount: parseFloat(editAmount) })
+    if (!editTitle.trim() || editAmount === "" || editAmount === null) return
+    editExpense({ ...expense, title: editTitle, amount: parseFloat(editAmount) })
     setIsEditing(false)
   }
 
@@ -49,15 +49,15 @@ function ExpenseItem({ expense, deleteExpense, editExpense }) {
         {expense.category && (
           <span className="expense-category">{expense.category}</span>
         )}
-       {expense.date && (
-         <span className="expense-date">
-           📅 {new Date(expense.date).toLocaleDateString("en-US", {
-             year: "numeric",
-             month: "numeric",
-             day: "numeric"
-           })}
-         </span>
-       )}
+        {expense.date && (
+          <span className="expense-date">
+            📅 {new Date(expense.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "numeric",
+              day: "numeric"
+            })}
+          </span>
+        )}
       </div>
       <div className="expense-right">
         <span className="expense-amount">${parseFloat(expense.amount).toFixed(2)}</span>

@@ -7,8 +7,8 @@ const COLORS = [
 ]
 
 function Chart({ expenses }) {
-    const pieRef = useRef(null)
-    const barRef = useRef(null)
+  const pieRef = useRef(null)
+  const barRef = useRef(null)
   // Group expenses by category
   const categoryTotals = expenses.reduce((acc, exp) => {
     acc[exp.category] = (acc[exp.category] || 0) + exp.amount
@@ -64,9 +64,9 @@ function Chart({ expenses }) {
     const paddingRight = 8
     const chartH = H - paddingTop - paddingBottom
     const chartW = W - paddingLeft - paddingRight
- 
+
     ctx.clearRect(0, 0, W, H)
- 
+
     const barCount = labels.length
     const slot = chartW / barCount
     const barWidth = Math.min(slot * 0.28, 22)  // narrower bars -> more separation
@@ -78,18 +78,18 @@ function Chart({ expenses }) {
       const x = paddingLeft + i * gap + gap / 2 - barWidth / 2
       const y = paddingTop + chartH - barH
 
-    // Draw bar
+      // Draw bar
       ctx.fillStyle = COLORS[i % COLORS.length]
       ctx.beginPath()
       ctx.roundRect(x, y, barWidth, barH, [4, 4, 0, 0])
       ctx.fill()
- 
+
       // Draw amount on top of bar
       ctx.fillStyle = "#6b7280"
       ctx.font = "bold 9px Arial"
       ctx.textAlign = "center"
       ctx.fillText("$" + val.toFixed(0), x + barWidth / 2, y - 4)
- 
+
       // Draw label below bar
       ctx.font = "8px Arial"
       ctx.fillStyle = "#9ca3af"

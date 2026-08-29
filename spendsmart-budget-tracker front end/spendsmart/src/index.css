@@ -15,6 +15,7 @@ a {
   color: #2563eb;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -39,7 +40,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .navbar-brand {
@@ -96,7 +97,7 @@ h1 {
   padding: 20px 24px;
   margin-bottom: 16px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .summary-row {
@@ -122,10 +123,17 @@ h1 {
   color: #1a1a2e;
 }
 
-.summary-value.remaining { color: #16a34a; }
-.summary-value.over-budget { color: #dc2626; }
+.summary-value.remaining {
+  color: #16a34a;
+}
 
-.progress-wrap { margin-top: 4px; }
+.summary-value.over-budget {
+  color: #dc2626;
+}
+
+.progress-wrap {
+  margin-top: 4px;
+}
 
 .progress-track {
   background: #f3f4f6;
@@ -141,8 +149,13 @@ h1 {
   transition: width 0.4s ease;
 }
 
-.progress-fill.warn { background: #f59e0b; }
-.progress-fill.danger { background: #ef4444; }
+.progress-fill.warn {
+  background: #f59e0b;
+}
+
+.progress-fill.danger {
+  background: #ef4444;
+}
 
 .progress-label {
   font-size: 0.78rem;
@@ -157,7 +170,7 @@ h1 {
   padding: 20px 24px;
   margin-bottom: 16px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .section-title {
@@ -245,7 +258,7 @@ button:hover {
   padding: 20px 24px;
   margin-bottom: 16px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 /* ── CHARTS ROW ── */
@@ -327,7 +340,7 @@ button:hover {
   border-radius: 10px;
   padding: 20px 24px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   margin-bottom: 16px;
 }
 
@@ -390,7 +403,9 @@ button:hover {
   font-weight: 600;
 }
 
-.btn-delete:hover { background: #fecaca; }
+.btn-delete:hover {
+  background: #fecaca;
+}
 
 .empty-state {
   text-align: center;
@@ -422,7 +437,9 @@ button:hover {
   min-width: 0;
 }
 
-.edit-amount { max-width: 90px; }
+.edit-amount {
+  max-width: 90px;
+}
 
 .btn-save {
   background: #16a34a;
@@ -435,7 +452,9 @@ button:hover {
   cursor: pointer;
 }
 
-.btn-save:hover { background: #15803d; }
+.btn-save:hover {
+  background: #15803d;
+}
 
 .btn-edit {
   background: #eff6ff;
@@ -448,7 +467,9 @@ button:hover {
   cursor: pointer;
 }
 
-.btn-edit:hover { background: #dbeafe; }
+.btn-edit:hover {
+  background: #dbeafe;
+}
 
 /* ── CONFIRM DELETE ── */
 .confirm-delete {
@@ -474,7 +495,9 @@ button:hover {
   cursor: pointer;
 }
 
-.btn-cancel-sm:hover { background: #e5e7eb; }
+.btn-cancel-sm:hover {
+  background: #e5e7eb;
+}
 
 /* ── SEARCH & FILTER ── */
 .search-filter {
@@ -516,7 +539,9 @@ button:hover {
   margin-bottom: 20px;
 }
 
-.page-header h1 { margin-bottom: 0; }
+.page-header h1 {
+  margin-bottom: 0;
+}
 
 .btn-edit-budget {
   background: #2563eb;
@@ -529,7 +554,9 @@ button:hover {
   cursor: pointer;
 }
 
-.btn-edit-budget:hover { background: #1d4ed8; }
+.btn-edit-budget:hover {
+  background: #1d4ed8;
+}
 
 .budget-edit {
   display: flex;
@@ -556,7 +583,9 @@ button:hover {
   cursor: pointer;
 }
 
-.btn-cancel:hover { background: #e5e7eb; }
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
 
 /* ── ABOUT ── */
 .about-card {
@@ -564,7 +593,7 @@ button:hover {
   border-radius: 10px;
   padding: 36px 40px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .about-card h2 {
@@ -589,7 +618,7 @@ button:hover {
   border-radius: 10px;
   padding: 36px 40px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .contact-card h2 {
@@ -718,16 +747,23 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  body { font-size: 14px; }
+  body {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 1.5rem; }
+  h1 {
+    font-size: 1.5rem;
+  }
 }
+
 .footer {
   text-align: center;
-  padding: 12px 20px;        /* was 20px */
-  margin-top: 20px;          /* was 40px */
+  padding: 12px 20px;
+  /* was 20px */
+  margin-top: 20px;
+  /* was 40px */
   border-top: 1px solid #e5e7eb;
   font-size: 0.82rem;
   color: #9ca3af;
@@ -852,9 +888,9 @@ button:hover {
   .contact-card,
   .navbar,
   .footer {
-    background: #1e293b;  
-  background: #243450;  
-  border-color: #4a6080;
+    background: #1e293b;
+    background: #243450;
+    border-color: #4a6080;
   }
 
   /* Inputs & selects */
@@ -884,12 +920,31 @@ button:hover {
   }
 
   /* Text */
-  h1, h2, h3 { color: #ffffff; }
-  .section-title { color: #64748b; }
-  .summary-value { color: #f1f5f9; }
-  .expense-name { color: #e2e8f0; }
-  .legend-label { color: #cbd5e1; }
-  .legend-amount { color: #f1f5f9; }
+  h1,
+  h2,
+  h3 {
+    color: #ffffff;
+  }
+
+  .section-title {
+    color: #64748b;
+  }
+
+  .summary-value {
+    color: #f1f5f9;
+  }
+
+  .expense-name {
+    color: #e2e8f0;
+  }
+
+  .legend-label {
+    color: #cbd5e1;
+  }
+
+  .legend-amount {
+    color: #f1f5f9;
+  }
 
   /* Expense items */
   .expense-item {
@@ -932,27 +987,69 @@ button:hover {
   }
 
   /* Progress track */
-  .progress-track { background: #334155; }
+  .progress-track {
+    background: #334155;
+  }
 
   /* Chart legend donut center */
-  canvas { color-scheme: dark; }
+  canvas {
+    color-scheme: dark;
+  }
 
-/* About text */
-  .about-card h2, .about-hero h2 { color: #ffffff !important; }
-  .about-tagline { color: #60a5fa !important; }
-  .about-description { color: #cbd5e1 !important; }
-  .about-feature-title { color: #f1f5f9 !important; }
-  .about-feature-desc { color: #94a3b8 !important; }
-  .about-built-with { color: #cbd5e1 !important; }
-  .about-badge { color: #e2e8f0 !important; }
+  /* About text */
+  .about-card h2,
+  .about-hero h2 {
+    color: #ffffff !important;
+  }
+
+  .about-tagline {
+    color: #60a5fa !important;
+  }
+
+  .about-description {
+    color: #cbd5e1 !important;
+  }
+
+  .about-feature-title {
+    color: #f1f5f9 !important;
+  }
+
+  .about-feature-desc {
+    color: #94a3b8 !important;
+  }
+
+  .about-built-with {
+    color: #cbd5e1 !important;
+  }
+
+  .about-badge {
+    color: #e2e8f0 !important;
+  }
 
   /* Contact text */
-  .contact-card h2 { color: #ffffff !important; }
-  .contact-intro { color: #cbd5e1 !important; }
-  .contact-email { color: #cbd5e1 !important; }
-  .contact-form-title { color: #f1f5f9 !important; }
-  .contact-field label { color: #94a3b8 !important; }
-  .contact-note { color: #94a3b8 !important; }
+  .contact-card h2 {
+    color: #ffffff !important;
+  }
+
+  .contact-intro {
+    color: #cbd5e1 !important;
+  }
+
+  .contact-email {
+    color: #cbd5e1 !important;
+  }
+
+  .contact-form-title {
+    color: #f1f5f9 !important;
+  }
+
+  .contact-field label {
+    color: #94a3b8 !important;
+  }
+
+  .contact-note {
+    color: #94a3b8 !important;
+  }
 }
 
 /* Auth Pages */
@@ -970,7 +1067,7 @@ button:hover {
   padding: 2.5rem;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -1083,7 +1180,7 @@ button:hover {
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.5rem;
 }
 
@@ -1125,7 +1222,7 @@ button:hover {
   border-radius: 12px;
   padding: 1.25rem;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .profile-stat-icon {
@@ -1149,7 +1246,7 @@ button:hover {
   background: white;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .profile-section h3 {
@@ -1171,6 +1268,7 @@ button:hover {
   color: #9ca3af;
   margin-top: 2px;
 }
+
 .greeting {
   font-size: 1rem;
   color: #6b7280;
@@ -1189,7 +1287,7 @@ button:hover {
   background: white;
   border-radius: 12px;
   padding: 1.25rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.5rem;
 }
 

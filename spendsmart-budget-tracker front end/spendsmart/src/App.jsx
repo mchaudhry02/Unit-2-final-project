@@ -11,16 +11,16 @@ import Notifications from "./pages/Notifications"
 
 function About() {
   const features = [
-      { icon: "📊", title: "Visual Charts", desc: "Donut and bar charts show exactly where your money goes at a glance." },
-      { icon: "➕", title: "Quick Add", desc: "Log expenses in seconds with a name, amount, category and date." },
-      { icon: "✏️", title: "Edit & Delete", desc: "Fix mistakes easily — update or remove any expense anytime with confirmation." },
-      { icon: "🗄️", title: "Database Powered", desc: "Your data is saved to a real MySQL database — accessible from anywhere." },
-      { icon: "🎯", title: "Budget Goals", desc: "Set a monthly budget and track progress with a live color-coded progress bar." },
-      { icon: "🔍", title: "Search & Filter", desc: "Find any expense instantly by name or filter the list by category." },
-      { icon: "🔒", title: "Secure Login", desc: "Register and log in securely — your data is protected with BCrypt encryption." },
-      { icon: "🔔", title: "Smart Notifications", desc: "Get alerts when you're close to your budget limit or overspending in a category." },
-      { icon: "👤", title: "User Profile", desc: "View your spending stats, account info, and manage your password from your profile." },
-    ]
+    { icon: "📊", title: "Visual Charts", desc: "Donut and bar charts show exactly where your money goes at a glance." },
+    { icon: "➕", title: "Quick Add", desc: "Log expenses in seconds with a name, amount, category and date." },
+    { icon: "✏️", title: "Edit & Delete", desc: "Fix mistakes easily — update or remove any expense anytime with confirmation." },
+    { icon: "🗄️", title: "Database Powered", desc: "Your data is saved to a real MySQL database — accessible from anywhere." },
+    { icon: "🎯", title: "Budget Goals", desc: "Set a monthly budget and track progress with a live color-coded progress bar." },
+    { icon: "🔍", title: "Search & Filter", desc: "Find any expense instantly by name or filter the list by category." },
+    { icon: "🔒", title: "Secure Login", desc: "Register and log in securely — your data is protected with BCrypt encryption." },
+    { icon: "🔔", title: "Smart Notifications", desc: "Get alerts when you're close to your budget limit or overspending in a category." },
+    { icon: "👤", title: "User Profile", desc: "View your spending stats, account info, and manage your password from your profile." },
+  ]
 
   return (
     <div className="about-card">

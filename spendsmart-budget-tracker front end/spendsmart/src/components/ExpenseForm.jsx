@@ -36,10 +36,10 @@ function ExpenseForm({ addExpense }) {
         setLoading(false)
       })
       .catch((err) => {
-      setCategories(CUSTOM_CATEGORIES)
-      setCategory(CUSTOM_CATEGORIES[0])
-      setError(err.message)
-      setLoading(false)
+        setCategories(CUSTOM_CATEGORIES)
+        setCategory(CUSTOM_CATEGORIES[0])
+        setError(err.message)
+        setLoading(false)
       })
   }, [])
 
@@ -89,7 +89,7 @@ function ExpenseForm({ addExpense }) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-             <optgroup label="General">
+            <optgroup label="General">
               {CUSTOM_CATEGORIES.map((cat) => (
                 <option key={cat} value={cat}>
                   {cat}

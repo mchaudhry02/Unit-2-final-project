@@ -29,12 +29,10 @@ public class AuthController {
             User user = userService.register(
                     body.get("username"),
                     body.get("email"),
-                    body.get("password")
-            );
+                    body.get("password"));
             return ResponseEntity.ok(Map.of(
                     "message", "Registration successful",
-                    "username", user.getUsername()
-            ));
+                    "username", user.getUsername()));
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
@@ -46,17 +44,14 @@ public class AuthController {
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             body.get("username"),
-                            body.get("password")
-                    )
-            );
+                            body.get("password")));
             SecurityContextHolder.getContext().setAuthentication(auth);
             HttpSession session = request.getSession(true);
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
             userService.updateLastLogin(auth.getName());
             return ResponseEntity.ok(Map.of(
                     "message", "Login successful",
-                    "username", auth.getName()
-            ));
+                    "username", auth.getName()));
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(401).body(Map.of("error", "Invalid username or password"));
         }
@@ -65,7 +60,8 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (session != null) session.invalidate();
+        if (session != null)
+            session.invalidate();
         SecurityContextHolder.clearContext();
         return ResponseEntity.ok(Map.of("message", "Logged out"));
     }
@@ -81,8 +77,7 @@ public class AuthController {
                 "id", user.getId(),
                 "username", user.getUsername(),
                 "email", user.getEmail(),
-                "lastLogin", user.getLastLogin() != null ? user.getLastLogin().toString() : "First login"
-        ));
+                "lastLogin", user.getLastLogin() != null ? user.getLastLogin().toString() : "First login"));
 
     }
 
@@ -96,8 +91,7 @@ public class AuthController {
             userService.changePassword(
                     auth.getName(),
                     body.get("currentPassword"),
-                    body.get("newPassword")
-            );
+                    body.get("newPassword"));
             return ResponseEntity.ok(Map.of("message", "Password changed successfully"));
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
