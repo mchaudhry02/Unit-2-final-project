@@ -1,10 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [rememberMe, setRememberMe] = useState(false)
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const remembered = localStorage.getItem("spendsmart-remember")
+    if (remembered) {
+      setUsername(remembered)
+      setRememberMe(true)
+    }
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,6 +30,11 @@ function Login({ onLogin }) {
       if (!res.ok) {
         setError(data.error || "Login failed")
       } else {
+        if (rememberMe) {
+          localStorage.setItem("spendsmart-remember", username)
+        } else {
+          localStorage.removeItem("spendsmart-remember")
+        }
         onLogin(data.username)
       }
     } catch (err) {
@@ -59,6 +73,18 @@ function Login({ onLogin }) {
               required
             />
           </div>
+
+
+          <div className="remember-me">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={e => setRememberMe(e.target.checked)}
+            />
+            <label htmlFor="rememberMe">Remember me</label>
+          </div>
+
           <button type="submit" className="btn-auth" disabled={loading}>
             {loading ? "Signing in..." : "Sign In"}
           </button>
