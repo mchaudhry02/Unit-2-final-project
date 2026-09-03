@@ -139,11 +139,24 @@ function App() {
   const [editingBudget, setEditingBudget] = useState(false)
   const [budgetInput, setBudgetInput] = useState(budget)
 
-  // Load transactions from API on mount
+  useEffect(() => {
+    fetch("http://localhost:8080/api/auth/me", {
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.username) {
+          setCurrentUser(data.username)
+        }
+      })
+      .catch(() => {
+        setCurrentUser(null)
+      })
+  }, [])
+
   useEffect(() => {
     getTransactions()
       .then(data => {
-        // Map backend shape to frontend shape
         const mapped = data.map(t => ({
           id: t.id,
           title: t.description,
@@ -158,10 +171,22 @@ function App() {
       .finally(() => setLoading(false))
   }, [])
 
+    useEffect(() => {
+      fetch("http://localhost:8080/api/auth/me", {
+        credentials: "include"
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.username) {
+            setCurrentUser(data.username)
+          }
+        })
+        .catch(() => setCurrentUser(null))
+    }, [])
+
   useEffect(() => { localStorage.setItem("spendsmart-budget", budget) }, [budget])
   useEffect(() => { localStorage.setItem("spendsmart-page", page) }, [page])
 
-  // Find existing category by name or create a new one
   const findOrCreateCategory = async (categoryName) => {
     try {
       const existing = await getCategories()
@@ -176,10 +201,8 @@ function App() {
 
   const addExpense = async (expense) => {
     try {
-      // Find or create the category in the database
       const category = await findOrCreateCategory(expense.category)
 
-      // Build the transaction payload with the category linked
       const payload = {
         description: expense.title,
         amount: expense.amount,
@@ -188,7 +211,6 @@ function App() {
         category: category ? { id: category.id } : null,
       }
 
-      // Save the transaction and update local state
       const created = await createTransaction(payload)
       setExpenses(prev => [...prev, {
         id: created.id,
@@ -246,7 +268,6 @@ function App() {
     .filter(exp => filterCategory === "All" || exp.category === filterCategory)
     .filter(exp => exp.title.toLowerCase().includes(search.toLowerCase()))
 
-  // Show auth pages if user is not logged in
   if (!currentUser) {
     if (authPage === "register") {
       return <Register onRegister={() => setAuthPage("login")} />
