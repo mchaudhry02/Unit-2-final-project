@@ -1350,3 +1350,23 @@ button:hover {
   font-size: 0.9rem;
   margin: 0;
 }
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.remember-me label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  cursor: pointer;
+}
