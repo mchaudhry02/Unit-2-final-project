@@ -1,5 +1,6 @@
 SELECT * FROM categories;
 SELECT * FROM transactions;
+SELECT * FROM users;
 Open this
 SELECT * FROM transaction_details;
 
