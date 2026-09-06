@@ -216,7 +216,7 @@ function App() {
         id: created.id,
         title: created.description,
         amount: parseFloat(created.amount),
-        category: created.category ? created.category.name : "Uncategorized",
+        category: category ? category.name : "Uncategorized",
         type: created.type,
         date: created.date,
       }])
