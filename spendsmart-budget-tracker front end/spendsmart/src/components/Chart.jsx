@@ -3,12 +3,14 @@ import spendSmartLogo from "../assets/spend_smart.jpg"
 
 const COLORS = [
   "#2563eb", "#16a34a", "#dc2626", "#f59e0b", "#8b5cf6",
-  "#ec4899", "#14b8a6", "#f97316", "#6366f1", "#84cc16"
+  "#ec4899", "#14b8a6", "#f97316", "#6366f1", "#84cc16",
+  "#0ea5e9", "#a855f7"
 ]
 
 function Chart({ expenses }) {
   const pieRef = useRef(null)
   const barRef = useRef(null)
+
   // Group expenses by category
   const categoryTotals = expenses.reduce((acc, exp) => {
     acc[exp.category] = (acc[exp.category] || 0) + exp.amount
@@ -20,7 +22,7 @@ function Chart({ expenses }) {
   const total = values.reduce((s, v) => s + v, 0)
   const maxValue = Math.max(...values)
 
-  //Draw pie/donut chart
+  // Draw pie/donut chart
   useEffect(() => {
     if (!pieRef.current || labels.length === 0) return
     const canvas = pieRef.current
@@ -59,7 +61,7 @@ function Chart({ expenses }) {
     const W = canvas.width
     const H = canvas.height
     const paddingTop = 16
-    const paddingBottom = 40
+    const paddingBottom = 80
     const paddingLeft = 8
     const paddingRight = 8
     const chartH = H - paddingTop - paddingBottom
@@ -69,7 +71,7 @@ function Chart({ expenses }) {
 
     const barCount = labels.length
     const slot = chartW / barCount
-    const barWidth = Math.min(slot * 0.28, 22)  // narrower bars -> more separation
+    const barWidth = Math.min(slot * 0.5, 30)
     const gap = slot
 
     labels.forEach((label, i) => {
@@ -90,13 +92,15 @@ function Chart({ expenses }) {
       ctx.textAlign = "center"
       ctx.fillText("$" + val.toFixed(0), x + barWidth / 2, y - 4)
 
-      // Draw label below bar
-      ctx.font = "8px Arial"
-      ctx.fillStyle = "#9ca3af"
-      ctx.textAlign = "center"
-
-      const shortLabel = label.length > 10 ? label.slice(0, 9) + "…" : label
-      ctx.fillText(shortLabel, x + barWidth / 2, H - paddingBottom + 10)
+      // Draw label below bar — angled to fit full word
+      ctx.save()
+      ctx.translate(x + barWidth / 2, H - paddingBottom + 8)
+      ctx.rotate(-Math.PI / 3)
+      ctx.font = "9px Arial"
+      ctx.fillStyle = "#6b7280"
+      ctx.textAlign = "right"
+      ctx.fillText(label, 0, 0)  // full label no truncation
+      ctx.restore()
     })
   }, [expenses])
 
@@ -105,72 +109,45 @@ function Chart({ expenses }) {
   return (
     <div className="chart-card">
       {/* Top header row */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "12px",
-          marginBottom: "8px",
-        }}
-      >
-        <h3 className="section-title" style={{ margin: 0 }}>
-          Spending by Category
-        </h3>
-
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+        <h3 className="section-title" style={{ margin: 0 }}>Spending by Category</h3>
         <img
           src={spendSmartLogo}
           alt="SpendSmart Logo"
-          style={{
-            width: 110,
-            height: 110,
-            borderRadius: "50%",
-            objectFit: "cover",
-            boxShadow: "0 4px 12px rgba(37,99,235,0.18)",
-          }}
-        />
+          style={{ width: 110, height: 110, borderRadius: "50%", objectFit: "cover", boxShadow: "0 4px 12px rgba(37,99,235,0.18)" }} />
       </div>
 
-      {/* Charts row (no logo inside) */}
-      <div
-        className="charts-row"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-start",
-          gap: "12px",
-          flexWrap: "wrap",
-          overflowX: "hidden",
-        }}
-      >
-        {/* Pie/Donut Chart */}
-        <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      {/* Charts row */}
+      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "24px", alignItems: "flex-start" }}>
+
+        {/* Donut chart + legend stacked vertically */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
           <p className="chart-label">By Share</p>
-          <div className="chart-wrap" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "12px" }}>
-            <canvas ref={pieRef} width={160} height={160} />
-            <div className="chart-legend">
-              {labels.map((label, i) => (
-                <div key={label} className="legend-item">
-                  <span className="legend-dot" style={{ background: COLORS[i % COLORS.length] }} />
-                  <span className="legend-label">{label}</span>
-                  <span className="legend-amount">${categoryTotals[label].toFixed(2)}</span>
-                </div>
-              ))}
-            </div>
+          <canvas ref={pieRef} width={200} height={200} />
+          {/* Legend in a 2-column grid below the chart */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px", maxWidth: "320px" }}>
+            {labels.map((label, i) => (
+              <div key={label} className="legend-item" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <span className="legend-dot" style={{ background: COLORS[i % COLORS.length], width: 10, height: 10, borderRadius: "50%", flexShrink: 0 }} />
+                <span className="legend-label" style={{ fontSize: "0.78rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "80px" }}>{label}</span>
+                <span className="legend-amount" style={{ fontSize: "0.78rem", fontWeight: 600 }}>${categoryTotals[label].toFixed(0)}</span>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Divider */}
         <div className="chart-divider" />
 
-        {/* Bar Chart */}
-        <div className="chart-block" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        {/* Bar chart */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <p className="chart-label">By Amount</p>
-          <canvas ref={barRef} width={360} height={200} />
+          <canvas ref={barRef} width={450} height={340} />
         </div>
+
       </div>
     </div>
-  );
+  )
 }
 
 export default Chart
