@@ -1050,6 +1050,46 @@ button:hover {
   .contact-note {
     color: #94a3b8 !important;
   }
+
+  .auth-field input,
+  .auth-field textarea {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: #475569 !important;
+  }
+
+
+
+  .auth-card,
+  .profile-section,
+  .profile-header,
+  .profile-stat-card,
+  .settings-section,
+  .notif-card {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+  }
+
+  .profile-name {
+    color: #ffffff !important;
+  }
+
+  .profile-email,
+  .profile-last-login {
+    color: #94a3b8 !important;
+  }
+
+  .profile-stat-label {
+    color: #94a3b8 !important;
+  }
+
+  .profile-stat-value {
+    color: #ffffff !important;
+  }
+
+  .navbar-user {
+    color: #ffffff !important;
+  }
 }
 
 /* Auth Pages */
@@ -1112,6 +1152,10 @@ button:hover {
   border-radius: 8px;
   font-size: 0.95rem;
   transition: border-color 0.2s;
+  background-color: white;
+  color: #111827;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .auth-field input:focus {
@@ -1167,9 +1211,10 @@ button:hover {
 }
 
 .navbar-user {
-  color: white;
+  color: #1e3a5f;
   font-size: 0.9rem;
-  opacity: 0.85;
+  font-weight: 600;
+  opacity: 1;
 }
 
 /* Profile Page */
@@ -1189,7 +1234,7 @@ button:hover {
   height: 70px;
   border-radius: 50%;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: white;
+  color: white !important;
   font-size: 2rem;
   font-weight: 700;
   display: flex;
@@ -1201,12 +1246,12 @@ button:hover {
 .profile-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e3a5f;
+  color: #1e3a5f !important;
   margin: 0;
 }
 
 .profile-email {
-  color: #6b7280;
+  color: #6b7280 !important;
   margin: 0.25rem 0 0 0;
 }
 
@@ -1278,7 +1323,7 @@ button:hover {
 
 .profile-last-login {
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: #9ca3af !important;
   margin: 0.25rem 0 0 0;
 }
 
