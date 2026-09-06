@@ -171,18 +171,18 @@ function App() {
       .finally(() => setLoading(false))
   }, [])
 
-    useEffect(() => {
-      fetch("http://localhost:8080/api/auth/me", {
-        credentials: "include"
+  useEffect(() => {
+    fetch("http://localhost:8080/api/auth/me", {
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.username) {
+          setCurrentUser(data.username)
+        }
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data.username) {
-            setCurrentUser(data.username)
-          }
-        })
-        .catch(() => setCurrentUser(null))
-    }, [])
+      .catch(() => setCurrentUser(null))
+  }, [])
 
   useEffect(() => { localStorage.setItem("spendsmart-budget", budget) }, [budget])
   useEffect(() => { localStorage.setItem("spendsmart-page", page) }, [page])
@@ -292,9 +292,9 @@ function App() {
           <button className={page === "About" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("About")}>About</button>
 
           <button
-                      className={page === "Notifications" ? "nav-btn active" : "nav-btn"}
-                      onClick={() => setPage("Notifications")}
-                    > Notifications</button>
+            className={page === "Notifications" ? "nav-btn active" : "nav-btn"}
+            onClick={() => setPage("Notifications")}
+          > Notifications</button>
           <button className={page === "Contact" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Contact")}>Contact</button>
           <button className={page === "Profile" ? "nav-btn active" : "nav-btn"} onClick={() => setPage("Profile")}>Profile</button>
           <span className="navbar-user">👤 {currentUser}</span>
