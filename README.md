@@ -32,26 +32,44 @@ SpendSmart is a full-stack budget tracking web application built for students an
 - Google Fonts
 - FontAwesome Icons
 - Unsplash
-- MealDB API (food categories)
+- MealDB API (food categories from external API)
 
 ---
 
 ## Features
 - User registration and login with BCrypt password encryption
 - Session-based authentication with Spring Security
+- Remember Me — auto-fills username on login page
+- Auto-login on page refresh using active session check
 - Personalized greeting based on time of day (Good Morning / Afternoon / Evening)
-- Add, edit, and delete expenses with date tracking
-- Organize expenses by category (linked to database via foreign key)
-- Donut and bar charts showing spending by category (Canvas API)
-- Live budget progress bar with color-coded warnings
-- Smart notifications — alerts when approaching or exceeding budget limit
-- Search and filter expenses by name or category
-- Profile page showing username, email, last login time, spending stats, and password change
-- Notifications page with budget alerts and category overspending warnings
+- Add, edit, and delete expenses with confirmation dialog
 - Transaction date display on each expense item
+- Organize expenses by category (linked to database via foreign key)
+- Categories fetched from MealDB public API + custom categories
+- Donut and bar charts showing spending by category (Canvas API)
+- Live budget progress bar with color-coded warnings (yellow at 70%, red at 90%)
+- Smart notifications page — alerts for budget limit, category overspending, and high transaction volume
+- Search expenses by name in real time
+- Filter expenses by category
+- Profile page showing username, email, last login time, spending stats (total spent, transaction count, top category)
+- Change password from profile page with validation
+- Dark mode support (auto-detects system preference)
 - Fully persistent data saved to MySQL database
 - RESTful API with full CRUD operations on transactions and categories
 - Database SQL script for initial setup and sample data population
+
+---
+
+## Pages
+| Page | Description |
+|---|---|
+| Login | Secure login with Remember Me checkbox |
+| Register | Create a new account with username, email and password |
+| Dashboard | Main page — add, view, edit, delete expenses, charts, budget bar |
+| About | App description, features overview, tech stack |
+| Notifications | Budget alerts and spending insights |
+| Profile | Account info, spending stats, change password |
+| Contact | Contact form with name, email and message |
 
 ---
 
@@ -157,16 +175,31 @@ Unit-2-final-project/
 └── spendsmart-budget-tracker front end/
     └── spendsmart/
         └── src/
-            ├── api/            (api.js — all fetch calls)
-            ├── components/     (ExpenseForm, ExpenseList, ExpenseItem, Summary, Chart)
-            ├── pages/          (Login, Register, Profile, Notifications)
-            └── App.jsx
+            ├── api/
+            │   └── api.js              (all fetch calls — transactions, categories, auth)
+            ├── assets/
+            │   └── spend_smart.jpg     (SpendSmart logo)
+            ├── components/
+            │   ├── Chart.jsx           (donut and bar charts using Canvas API)
+            │   ├── ExpenseForm.jsx     (add expense form with MealDB categories)
+            │   ├── ExpenseItem.jsx     (individual expense with edit and delete)
+            │   ├── ExpenseList.jsx     (renders list of ExpenseItem components)
+            │   └── Summary.jsx         (budget summary with progress bar)
+            ├── pages/
+            │   ├── Login.jsx           (login form with Remember Me)
+            │   ├── Register.jsx        (registration form)
+            │   ├── Profile.jsx         (user profile, stats, change password)
+            │   └── Notifications.jsx   (budget alerts and spending insights)
+            ├── App.jsx                 (main app, routing, state management)
+            ├── index.css               (global styles, dark mode, responsive)
+            └── main.jsx                (React entry point)
 ```
 
 ---
 
 ## Entity Relationship Diagram
-![ERD](SpendSmart.png)
+[Add link to your ERD here]
+
 ## Wireframes
 https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2czNZWURoZzNsaGZieDVBZmV2Z21ua0JnYU1qUUdneUQwbzVVM2dsRmp1cE1GcG9uUFVoT2pPNHpRS1cxeVVEa0NwelN5ZXNVaHA5MWxsT1ZyZ2I3dHlCL2lXUURBd044SHFHaVlWYWk0d3NxeHNmeG9BPT0hdjE=?share_link_id=852386448290
 
@@ -177,6 +210,7 @@ https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2
 - No income vs expense toggle in the UI (backend supports `TransactionType` enum)
 - Budget goal is stored in localStorage rather than the database
 - Contact form uses Netlify form handling which requires deployment to work
+- Dark mode donut chart center still shows white (does not adapt to dark background)
 
 ## Future Features
 - Scope transactions per logged-in user using Spring Security Principal
@@ -185,6 +219,6 @@ https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2
 - Monthly and yearly spending reports
 - Export transactions as CSV or PDF
 - Import expenses from a bank statement
-- Dark mode toggle
-- Mobile-responsive redesign
 - Analytics page with monthly spending trends
+- Mobile-responsive redesign
+- Fix dark mode donut chart center color
