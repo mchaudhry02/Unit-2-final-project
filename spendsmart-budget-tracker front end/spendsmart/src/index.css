@@ -1415,3 +1415,188 @@ button:hover {
   color: #6b7280;
   cursor: pointer;
 }
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 480px) {
+@media (max-width: 480px) {
+
+  /* Fix profile header overflow */
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .profile-name {
+    font-size: 1.2rem;
+    word-break: break-word;
+  }
+
+  .profile-email {
+    font-size: 0.8rem;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .profile-last-login {
+    font-size: 0.75rem;
+    word-break: break-word;
+  }
+
+  /* Fix profile stat cards */
+  .profile-stat-card {
+    padding: 1rem;
+  }
+
+  .profile-stat-value {
+    font-size: 1.1rem;
+    word-break: break-word;
+  }
+
+  /* Fix auth card overflow */
+  .auth-card {
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+    width: auto;
+  }
+
+  /* Fix any general text overflow */
+  .app-container {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+  /* Navbar - stack brand and links */
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  .navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .nav-btn {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+  }
+
+  .navbar-user {
+    font-size: 0.75rem;
+  }
+
+  /* Page header - stack vertically */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .page-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .greeting {
+    font-size: 0.9rem;
+  }
+
+  /* Summary card */
+  .summary-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .summary-stat {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Chart card - stack everything */
+  .chart-card {
+    padding: 12px;
+  }
+
+  .chart-card > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Hide logo on mobile to save space */
+  .chart-card img {
+    display: none;
+  }
+
+  /* Expense form - stack inputs */
+  .expense-form {
+    flex-direction: column;
+  }
+
+  .expense-form input,
+  .expense-form select,
+  .expense-form button {
+    width: 100%;
+  }
+
+  /* Expense item - stack left and right */
+  .expense-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .expense-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Search filter - stack */
+  .search-filter {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-input,
+  .filter-select {
+    width: 100%;
+  }
+
+  /* Profile stats - 1 column on mobile */
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* Budget edit */
+  .budget-edit {
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .budget-input {
+    width: 100%;
+  }
+
+  /* Notifications */
+  .notif-card {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
