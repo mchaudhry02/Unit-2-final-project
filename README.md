@@ -198,8 +198,7 @@ Unit-2-final-project/
 ---
 
 ## Entity Relationship Diagram
-[Add link to your ERD here]
-
+https://lucid.app/lucidchart/5582a27c-204b-4f99-b33b-77be70a57e43/edit?viewport_loc=-816%2C-183%2C1552%2C631%2C0_0&invitationId=inv_0739609c-3163-45be-be80-166123d85a50
 ## Wireframes
 https://miro.com/welcomeonboard/WDYrcEd6R3NvWlNXdEhGMnFJT3A3S1VlM3UxSUJzamVwdGo2czNZWURoZzNsaGZieDVBZmV2Z21ua0JnYU1qUUdneUQwbzVVM2dsRmp1cE1GcG9uUFVoT2pPNHpRS1cxeVVEa0NwelN5ZXNVaHA5MWxsT1ZyZ2I3dHlCL2lXUURBd044SHFHaVlWYWk0d3NxeHNmeG9BPT0hdjE=?share_link_id=852386448290
 
