@@ -8,6 +8,8 @@ const CUSTOM_CATEGORIES = [
   "Utilities",
   "Rent",
   "Education",
+  "Fruits",
+  "Education",
   "Others"
 ]
 function ExpenseForm({ addExpense }) {
