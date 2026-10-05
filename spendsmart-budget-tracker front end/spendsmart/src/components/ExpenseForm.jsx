@@ -9,7 +9,6 @@ const CUSTOM_CATEGORIES = [
   "Rent",
   "Education",
   "Fruits",
-  "Education",
   "Others"
 ]
 function ExpenseForm({ addExpense }) {
@@ -31,6 +30,7 @@ function ExpenseForm({ addExpense }) {
         const foodCategories = data.categories
           .map((cat) => cat.strCategory)
           .filter((cat) => !cat.toLowerCase().includes("pork"))
+          .filter((cat) => !CUSTOM_CATEGORIES.map(c => c.toLowerCase()).includes(cat.toLowerCase()))
         const allCategories = [...CUSTOM_CATEGORIES, ...foodCategories]
 
         setCategories(allCategories)
